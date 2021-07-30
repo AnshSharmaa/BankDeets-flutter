@@ -7,13 +7,15 @@ class Register extends StatefulWidget {
 
 class _RegisterViewState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController _usernameController = TextEditingController()
+  late TextEditingController _nameFieldController = TextEditingController()
     ..text = '';
   late TextEditingController _emailController = TextEditingController()
     ..text = '';
-  late TextEditingController _passwordController = TextEditingController()
+  late TextEditingController _phoneNumberController = TextEditingController()
     ..text = '';
-  late TextEditingController _repasswordController = TextEditingController()
+  late TextEditingController _accountNumberFieldController =
+      TextEditingController()..text = '';
+  late TextEditingController _ifscCodeController = TextEditingController()
     ..text = '';
 
   @override
@@ -21,7 +23,7 @@ class _RegisterViewState extends State<Register> {
     final mq = MediaQuery.of(context);
 
     final nameField = TextFormField(
-      controller: _usernameController,
+      controller: _nameFieldController,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -68,7 +70,7 @@ class _RegisterViewState extends State<Register> {
     );
 
     final phoneNumber = TextFormField(
-      controller: _passwordController,
+      controller: _phoneNumberController,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -91,7 +93,7 @@ class _RegisterViewState extends State<Register> {
     );
 
     final accountNumberField = TextFormField(
-      controller: _repasswordController,
+      controller: _accountNumberFieldController,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -113,7 +115,7 @@ class _RegisterViewState extends State<Register> {
     );
 
     final ifscCode = TextFormField(
-      controller: _repasswordController,
+      controller: _ifscCodeController,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -134,18 +136,15 @@ class _RegisterViewState extends State<Register> {
       ),
     );
 
-    final fields = Padding(
-      padding: EdgeInsets.only(top: 10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          nameField,
-          emailField,
-          phoneNumber,
-          accountNumberField,
-          ifscCode,
-        ],
-      ),
+    final fields = Column(
+      // mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        nameField,
+        emailField,
+        phoneNumber,
+        accountNumberField,
+        ifscCode,
+      ],
     );
 
     final submitButton = Material(
@@ -164,7 +163,11 @@ class _RegisterViewState extends State<Register> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Submitted')),
+          );
+        },
       ),
     );
 
@@ -175,18 +178,19 @@ class _RegisterViewState extends State<Register> {
       ),
       backgroundColor: Color.fromRGBO(14, 65, 138, 0.8),
       body: Form(
-        key: _formKey,
-        child: Container(
-          padding: EdgeInsets.all(56),
-          // alignment: Alignment.center,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                fields,
-                submitButton,
-              ]),
-        ),
-      ),
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(36),
+            child: Container(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    fields,
+                    SizedBox(height: 30),
+                    submitButton,
+                  ]),
+            ),
+          )),
     );
   }
 }
