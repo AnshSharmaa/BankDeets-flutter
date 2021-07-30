@@ -64,7 +64,13 @@
             if (!reg.active && (reg.installing || reg.waiting)) {
               // No active web worker and we have installed or are installing
               // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing ?? reg.waiting);
+              if(reg.installing != null) {
+                waitForActivation(reg.installing);
+              }
+              if(reg.waiting != null) {
+                waitForActivation(reg.waiting);
+              }
+            
             } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
               // When the app updates the serviceWorkerVersion changes, so we
               // need to ask the service worker to update.
@@ -96,15 +102,24 @@
   </script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-storage.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script>
   // Your web app's Firebase configuration
-  import { firebaseConfig } from './firebase-config.js';
+  var firebaseConfig = {
+    apiKey: "AIzaSyDMiplaiyhiYa8bMHg_VDk4kHOPNHfyLOQ",
+    authDomain: "bankdeets.firebaseapp.com",
+    projectId: "bankdeets",
+    storageBucket: "bankdeets.appspot.com",
+    messagingSenderId: "31026834431",
+    appId: "1:31026834431:web:44c3625e35eb52518095ca"
+  };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
+
 </body>
 </html>
