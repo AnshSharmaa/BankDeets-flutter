@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bank_deets/services/database.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class Register extends StatefulWidget {
 
 class _RegisterViewState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
+
   late TextEditingController _nameFieldController = TextEditingController()
     ..text = '';
   late TextEditingController _emailController = TextEditingController()
@@ -163,9 +165,16 @@ class _RegisterViewState extends State<Register> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () {
+        onPressed: () async {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Submitted')),
+          );
+          await DatabseService().addData(
+            _nameFieldController.text,
+            _emailController.text,
+            _phoneNumberController.text,
+            _accountNumberFieldController.text,
+            _ifscCodeController.text,
           );
         },
       ),
