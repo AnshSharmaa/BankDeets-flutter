@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "31026834431",
+    "project_id": "bankdeets",
+    "storage_bucket": "bankdeets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31026834431:android:8f8bd292d1bde7418095ca",
+        "android_client_info": {
+          "package_name": "com.ansh.bank_deets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31026834431-0fjjtg9qi5c9ca8m6a737e48f62cdjo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwbtSFNw7kFUx7gvsVPn368Tb-vxhTC-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31026834431-0fjjtg9qi5c9ca8m6a737e48f62cdjo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
